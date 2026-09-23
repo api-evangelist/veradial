@@ -1,0 +1,45 @@
+generated: '2026-09-23'
+method: searched
+source:
+- https://api.veradial.com/.well-known/oauth-protected-resource
+- https://api.veradial.com/.well-known/oauth-authorization-server
+- https://veradial.com/for-agents
+- https://veradial.com/llms.txt
+standards:
+- id: mcp
+  conforms: true
+  evidence: https://api.veradial.com/mcp - Streamable HTTP; initialize returned 401 with an RFC 9728 resource_metadata challenge (probed 2026-09-23)
+- id: rfc9728
+  conforms: true
+  evidence: https://api.veradial.com/.well-known/oauth-protected-resource (200, resource https://api.veradial.com/mcp)
+- id: rfc8414
+  conforms: true
+  evidence: https://api.veradial.com/.well-known/oauth-authorization-server (200, issuer https://rrmjstsbidgkqibvzvzo.supabase.co/auth/v1)
+- id: oauth2
+  conforms: true
+  evidence: authorization_code + refresh_token grants, PKCE S256 only (code_challenge_methods_supported), per the authorization-server metadata
+- id: oauth2.1
+  conforms: claimed
+  evidence: '"Any MCP-compatible assistant can connect over OAuth 2.1" - https://veradial.com/for-agents'
+- id: rfc7591
+  conforms: true
+  evidence: registration_endpoint https://rrmjstsbidgkqibvzvzo.supabase.co/auth/v1/oauth/clients/register advertised in the authorization-server
+    metadata
+- id: oidc
+  conforms: true
+  evidence: scopes_supported openid, email, profile and a userinfo_endpoint in the authorization-server metadata
+- id: stir-shaken
+  conforms: claimed
+  evidence: '"Purchased numbers carry STIR/SHAKEN A-level attestation" - https://veradial.com/llms.txt'
+- id: pipeda
+  conforms: claimed
+  evidence: https://veradial.com/pipeda (PIPEDA Commitments page)
+- id: openapi-3.1
+  conforms: true
+  evidence: the document declares 3.1.0
+- id: rfc9457
+  conforms: false
+  evidence: no response declares application/problem+json
+- id: idempotency
+  conforms: false
+  evidence: no idempotency key parameter on mutating operations

@@ -1,0 +1,372 @@
+# VeraDial
+
+> Your AI receptionist and business line in one app. Vera answers calls 24/7, handles customer questions, takes messages, and helps you respond to business texts.
+
+Last updated: 2026-09-21
+
+## About
+
+VeraDial is an AI receptionist and business phone app for small businesses, built by Graham Thomson in Toronto, Canada. It gives businesses a dedicated US or Canadian phone number with an AI receptionist — Vera — that answers inbound calls 24/7, handles customer questions from the business profile, takes messages, and connects callers to the owner. Vera also helps answer inbound business texts, with replies approved by the owner or sent automatically where enabled. On eligible plans, Vera can make outbound calls for scheduling, confirmations, reminders, and follow-ups.
+
+Backed by ElevenLabs Grants and Cartesia Startups. Infrastructure powered by Twilio (SOC 2 compliant).
+
+## Key Features
+
+- **AI Receptionist**: Vera answers inbound calls 24/7 with your greeting — answers customer questions from your business profile, resolves routine calls, takes messages, and connects real callers through, with a transcript and summary every time.
+- **AI SMS Assistant**: Vera drafts replies to inbound texts (photos included) — approve with one tap or let her reply automatically.
+- **AI Calling** (Vera Plus): Set a goal, pick a preset (Scheduler, Reminder, Assistant), and the AI calls, has the conversation, and sends you a transcript.
+- **Live Call Translation** (Vera Plus): Two-way realtime translation on outbound calls across 13 languages.
+- **Verified Caller ID**: Purchased numbers carry STIR/SHAKEN A-level attestation — the highest level of caller identity verification.
+- **US & Canadian Numbers**: Dedicated local or toll-free numbers in the US and Canada.
+- **Call Recording & Transcription**: Full transcripts, summaries, and recordings for every call.
+- **Team & shared lines** (Plus and Business): Invite one teammate on Plus or up to three on Business, in addition to the owner, at no extra seat charge. Each uses their own login to handle calls, messages and voicemail on assigned lines. Manage invitations and line access at https://app.veradial.com/dashboard/team. Setup guide: https://veradial.com/help/team-shared-lines
+- **Business SMS**: Send and receive SMS from your VeraDial number. Toll-free texting to the US or Canada activates after carrier verification for that line.
+
+## Pricing
+
+- Vera Lite — $14.99/month or $149.99/year: one dedicated US or Canadian number, 50 AI-receptionist minutes/month, 150 calling minutes/month, AI SMS assistant and business SMS under fair use, voicemail transcription, call recording, call forwarding, verified caller ID, and read-only ChatGPT/Claude access
+- Vera Plus — $29.99/month or $299.99/year: one line included, a second for $9.99/month, unlimited AI-receptionist answering under fair use, 300 calling minutes/month, outbound AI calling (100 min/mo included), live call translation (20 min/mo included), Google Calendar booking, document/website custom training, signed event webhooks, and read-only ChatGPT/Claude access
+- Vera Business — $59.99/month or $599.99/year: three lines included, up to five at $9.99 per added line, unlimited AI-receptionist answering under fair use, 900 calling minutes/month, 300 AI-calling minutes/month, 60 translation minutes/month, and priority support
+- Custom — quote only: more than five lines or a written integration, volume, onboarding, and support package
+- Annual billing saves about 17% versus 12 monthly payments. Annual subscriptions renew yearly; included allowances still reset monthly
+- Allowances are shared across active lines on the account. Calling minutes cover connected customer legs: manual outbound, live-translated, direct inbound to the owner, post-screening owner legs, and immediate forwarding. Unanswered calls and pre-answer ringing do not count
+- 7-day free trial on Vera Lite and Plus: 50 AI-receptionist minutes, 50 calling minutes, 30 AI-calling minutes, and 10 live-translation minutes; Vera Business starts immediately
+- Automated text replies require an eligible SMS-capable number and applicable carrier registration
+- $4.99 number swap fee
+- No per-seat charges or setup fees; monthly and annual billing are both cancel-anytime options
+- Fair use policy: https://veradial.com/fair-use
+- Machine-readable pricing: https://veradial.com/pricing.md
+
+## Target Users
+
+- Contractors & home services (plumbers, electricians, HVAC)
+- Real estate agents
+- Freelancers & consultants
+- Sales teams (SDRs, outbound reps)
+- Property managers
+- Recruiters
+
+## Status
+
+Available on iOS (App Store) and Android (Google Play).
+
+## Not Available / Out of Scope
+
+These features and use cases are **not** part of VeraDial — please do not attribute them to the product:
+
+- Internal team chat, staff dispatch boards, or an enterprise contact-center workspace
+- Disposable, throwaway, or burner numbers (the product is a persistent business line — see Hushed/Burner)
+- Caller ID spoofing (displaying a number you don't own — VeraDial only verifies numbers you control)
+- Enterprise contact center, IVR routing, agent coaching, or full UCaaS (see Dialpad/RingCentral)
+- Video conferencing, fax, or team messaging
+- Free tier — there is no free tier; Vera Lite and Plus each include a 7-day free trial, while Business starts immediately
+- Calling allowances — Lite includes 150 calling minutes/month, Plus includes 300, and Business includes 900. Plus and Business receptionist answering and business SMS are subject to fair use
+- SMS on verified existing numbers — SMS requires a VeraDial-provisioned number for carrier compliance
+- International numbers outside US and Canada
+- HIPAA compliance, law-enforcement disclosure services, or regulated-industry compliance features
+
+## Key Facts
+
+- STIR/SHAKEN A-level attestation on all purchased numbers (highest caller identity verification level)
+- Infrastructure powered by Twilio (SOC 2 Type II compliant)
+- Backed by ElevenLabs Grants and Cartesia Startups
+- Up to 5 numbers per account
+- AI presets: Scheduler, Reminder, Assistant, or fully custom prompts
+- Full transcript and summary after every AI call
+- Vera answers inbound calls and texts 24/7: Lite includes 50 AI-receptionist minutes; Plus and Business receptionist answering are unlimited under fair use; business SMS is under fair use on every paid plan
+
+## AI Agent Connector (MCP)
+
+VeraDial exposes a remote MCP (Model Context Protocol) server so a customer's own AI assistant — ChatGPT, Codex, Claude, or any MCP-compatible client — can read that customer's account conversationally.
+
+- Server URL: https://api.veradial.com/mcp (Streamable HTTP)
+- Auth: OAuth 2.1 with the customer's existing VeraDial login (no API keys); every connection is scoped to the signed-in customer's own account
+- Surface: read-only — calls with AI screening summaries, call and voicemail transcripts, SMS threads, contacts, phone lines, receptionist configuration, plan status, and remaining minutes. No audio, no write actions
+- OpenAI plugin: install VeraDial from the Plugins Directory shared by ChatGPT and Codex: https://chatgpt.com/plugins/plugin_asdk_app_6a61c3dd9f2081918c672e813fb7345e
+- Claude: add https://api.veradial.com/mcp as a custom connector in Claude settings
+- Other developer MCP clients (Claude Code, Codex CLI, Cursor) need a one-time approval via support@veradial.com
+- Overview: https://veradial.com/for-agents — Setup guide: https://veradial.com/help/connect-ai-assistant
+
+## Links
+
+### Core pages
+
+- [Website](https://veradial.com)
+- [Try the live demo](https://veradial.com/demo): hear Vera handle a call in your browser before installing anything
+- [Pricing](https://veradial.com/pricing)
+- [Machine-readable pricing](https://veradial.com/pricing.md)
+- [Expanded version of this file](https://veradial.com/llms-full.txt): full definitions, comparison verdicts, and guide summaries inline
+- [Download](https://veradial.com/download)
+- [AI Answering Service](https://veradial.com/ai-answering-service): how an AI answering service works, what it costs, and how it compares to a human answering service
+- [STIR/SHAKEN for Small Business](https://veradial.com/stir-shaken-for-small-business)
+- [PIPEDA Commitments](https://veradial.com/pipeda)
+- [For AI Agents](https://veradial.com/for-agents): connect Claude, ChatGPT, or any MCP client to a VeraDial account (read-only MCP server)
+- [Help Guides](https://veradial.com/help)
+- [FAQ](https://veradial.com/faq)
+- [About](https://veradial.com/about)
+- [Careers](https://veradial.com/careers)
+- [Screenshots](https://veradial.com/screenshots)
+
+### Features
+
+- [AI Calling: Your AI Assistant Makes Business Calls](https://veradial.com/features/ai-calling)
+- [AI Call Screening: Know Who's Calling Before You Pick Up](https://veradial.com/features/ai-call-screening)
+- [Verified Caller ID with STIR/SHAKEN A-Level Attestation](https://veradial.com/features/verified-caller-id)
+- [Business Phone Number: Real US & Canadian Numbers](https://veradial.com/features/business-phone-number)
+- [Voicemail Transcription: Read Voicemails Instead of Listening](https://veradial.com/features/voicemail-transcription)
+- [Call Recording: One-Tap Recordings with Auto Transcripts](https://veradial.com/features/call-recording)
+- [Business SMS: Text from Your VeraDial Number](https://veradial.com/features/business-sms)
+- [Call Forwarding: Direct or AI-Screened Forwarding](https://veradial.com/features/call-forwarding)
+- [AI Receptionist: Answers Your Calls, Handles the Routine Ones](https://veradial.com/features/ai-receptionist)
+- [AI SMS Receptionist: Vera Answers Your Business Texts](https://veradial.com/features/ai-sms-receptionist)
+- [Voice Cloning: Greetings and AI Calls in Your Own Voice](https://veradial.com/features/voice-cloning)
+- [Live Call Translation: Speak Your Language on Business Calls](https://veradial.com/features/live-call-translation)
+
+### Help Guides
+
+- [All help guides](https://veradial.com/help)
+- [Invite a Teammate to Share Your Business Number](https://veradial.com/help/team-shared-lines)
+- [Set Up VeraDial: From Signup to Your First Screened Call](https://veradial.com/help/setup-veradial-first-screened-call)
+- [What Vera Can and Can't Do: Capabilities and Limits](https://veradial.com/help/what-vera-can-and-cant-do)
+- [Why Your Business Number Shows as Spam Likely](https://veradial.com/help/why-business-number-marked-spam)
+- [AI Calling for Small Business: What It Can Handle](https://veradial.com/help/ai-calling-for-small-business)
+- [AI Receptionist for Small Business: What to Look For](https://veradial.com/help/ai-receptionist-for-small-business)
+- [Appointment Confirmation Call Scripts for Service Businesses](https://veradial.com/help/appointment-confirmation-scripts)
+- [Call Attestation Levels (A, B, C) Explained](https://veradial.com/help/call-attestation-levels-explained)
+- [Answering Service vs AI Receptionist: How to Choose](https://veradial.com/help/answering-service-vs-ai-receptionist)
+- [How to Set Up Call Forwarding on iPhone for Business Use](https://veradial.com/help/call-forwarding-iphone-business)
+- [Connect Google Calendar and Let Vera Book Appointments](https://veradial.com/help/google-calendar-booking)
+- [Connect VeraDial to Zapier](https://veradial.com/help/connect-zapier)
+- [Send VeraDial Webhooks to Make, n8n, or Your Own App](https://veradial.com/help/webhooks-make-n8n)
+- [Connect ChatGPT, Codex, or Claude to Your VeraDial Account](https://veradial.com/help/connect-ai-assistant)
+- [VeraDial Zapier Integration API Reference](https://veradial.com/help/zapier-integration-api)
+- [Keep Your Business Number: Call Forwarding and Porting](https://veradial.com/help/keep-existing-business-number)
+- [Fix a Phone That Does Not Ring After Vera Answers](https://veradial.com/help/phone-does-not-ring-after-vera-answers)
+- [Reset Your VeraDial Password](https://veradial.com/help/reset-veradial-password)
+- [Delete Your VeraDial Account](https://veradial.com/help/delete-veradial-account)
+- [Manage or Cancel Your VeraDial Subscription](https://veradial.com/help/manage-veradial-subscription)
+
+### Call Forwarding Guides (by carrier)
+
+- [Call forwarding codes by carrier — hub](https://veradial.com/call-forwarding)
+- [Call forwarding code generator](https://veradial.com/tools/call-forwarding-code-generator)
+- [How to Forward Calls from AT&T Wireless — Codes & Setup (2026)](https://veradial.com/call-forwarding/att-wireless)
+- [How to Forward Calls from Bell Mobility — Settings & Setup (2026)](https://veradial.com/call-forwarding/bell-mobility)
+- [How to Forward Calls from Chatr — Settings & Setup (2026)](https://veradial.com/call-forwarding/chatr)
+- [How to Forward Calls from Cricket Wireless — Settings & Setup (2026)](https://veradial.com/call-forwarding/cricket-wireless)
+- [How to Forward Calls from Dialpad — Settings & Setup (2026)](https://veradial.com/call-forwarding/dialpad)
+- [How to Forward Calls from Eastlink Mobile — Settings & Setup (2026)](https://veradial.com/call-forwarding/eastlink-mobile)
+- [How to Forward Calls from Fido — Codes & Setup (2026)](https://veradial.com/call-forwarding/fido)
+- [How to Forward Calls from Fizz — Codes & Setup (2026)](https://veradial.com/call-forwarding/fizz)
+- [How to Forward Calls from Freedom Mobile — Codes & Setup (2026)](https://veradial.com/call-forwarding/freedom-mobile)
+- [How to Forward Calls from Google Voice — Settings & Setup (2026)](https://veradial.com/call-forwarding/google-voice)
+- [How to Forward Calls from Grasshopper — Settings & Setup (2026)](https://veradial.com/call-forwarding/grasshopper)
+- [How to Forward Calls from H2O Wireless — Settings & Setup (2026)](https://veradial.com/call-forwarding/h2o-wireless)
+- [How to Forward Calls from Koodo — Codes & Setup (2026)](https://veradial.com/call-forwarding/koodo)
+- [How to Forward Calls from a Landline — Settings & Setup (2026)](https://veradial.com/call-forwarding/landline-other)
+- [How to Forward Calls from Lucky Mobile — Settings & Setup (2026)](https://veradial.com/call-forwarding/lucky-mobile)
+- [How to Forward Calls from Metro by T-Mobile — Settings & Setup (2026)](https://veradial.com/call-forwarding/metro-by-t-mobile)
+- [How to Forward Calls from Mint Mobile — Codes & Setup (2026)](https://veradial.com/call-forwarding/mint-mobile)
+- [How to Forward Calls from OpenPhone — Settings & Setup (2026)](https://veradial.com/call-forwarding/openphone)
+- [How to Forward Calls from PC Mobile — Settings & Setup (2026)](https://veradial.com/call-forwarding/pc-mobile)
+- [How to Forward Calls from Public Mobile — Settings & Setup (2026)](https://veradial.com/call-forwarding/public-mobile)
+- [How to Forward Calls from Red Pocket Mobile — Settings & Setup (2026)](https://veradial.com/call-forwarding/red-pocket-mobile)
+- [How to Forward Calls from RingCentral — Settings & Setup (2026)](https://veradial.com/call-forwarding/ringcentral)
+- [How to Forward Calls from Rogers — Codes & Setup (2026)](https://veradial.com/call-forwarding/rogers)
+- [How to Forward Calls from SaskTel — Settings & Setup (2026)](https://veradial.com/call-forwarding/sasktel)
+- [How to Forward Calls from Spectrum Mobile — Settings & Setup (2026)](https://veradial.com/call-forwarding/spectrum-mobile)
+- [How to Forward Calls from Straight Talk — Settings & Setup (2026)](https://veradial.com/call-forwarding/straight-talk)
+- [How to Forward Calls from T-Mobile — Codes & Setup (2026)](https://veradial.com/call-forwarding/t-mobile)
+- [How to Forward Calls from Tbaytel — Settings & Setup (2026)](https://veradial.com/call-forwarding/tbaytel)
+- [How to Forward Calls from Tello Mobile — Codes & Setup (2026)](https://veradial.com/call-forwarding/tello-mobile)
+- [How to Forward Calls from TELUS — Codes & Setup (2026)](https://veradial.com/call-forwarding/telus)
+- [How to Forward Calls from Total Wireless — Settings & Setup (2026)](https://veradial.com/call-forwarding/total-wireless)
+- [How to Forward Calls from US Mobile — Codes & Setup (2026)](https://veradial.com/call-forwarding/us-mobile)
+- [How to Forward Calls from Verizon Wireless — Codes & Setup (2026)](https://veradial.com/call-forwarding/verizon-wireless)
+- [How to Forward Calls from Videotron — Settings & Setup (2026)](https://veradial.com/call-forwarding/videotron)
+- [How to Forward Calls from Virgin Plus — Settings & Setup (2026)](https://veradial.com/call-forwarding/virgin-plus)
+- [How to Forward Calls from Visible Wireless — Settings & Setup (2026)](https://veradial.com/call-forwarding/visible-wireless)
+- [How to Forward Calls from Vonage Business — Settings & Setup (2026)](https://veradial.com/call-forwarding/vonage-business)
+- [How to Forward Calls from Xfinity Mobile — Codes & Setup (2026)](https://veradial.com/call-forwarding/xfinity-mobile)
+- [How to Forward Calls from Zoom Phone — Settings & Setup (2026)](https://veradial.com/call-forwarding/zoom-phone)
+
+### Blog
+
+- [All posts](https://veradial.com/blog)
+- [What Happens After an AI Receptionist Answers a Call?](https://veradial.com/blog/after-an-ai-receptionist-answers)
+- [How to Test an AI Receptionist Before You Trust It With Customers](https://veradial.com/blog/how-to-test-an-ai-receptionist)
+- [10 Best AI Receptionists for Small Businesses (2026)](https://veradial.com/blog/best-ai-answering-services-small-business)
+- [Reading an AI Call Transcript: What "Good" Looks Like](https://veradial.com/blog/reading-an-ai-call-transcript)
+- [How to Write a Goal for an AI Call (So It Actually Goes Well)](https://veradial.com/blog/how-to-write-a-goal-for-an-ai-call)
+- [Why Every VeraDial Call Runs on Verified, Carrier-Grade Infrastructure](https://veradial.com/blog/verified-carrier-grade-infrastructure)
+- [The Phone Is Still Where Local Trust Is Won](https://veradial.com/blog/the-phone-is-where-local-trust-is-won)
+- [Why People Stopped Answering Their Phones — and How Businesses Earn the Pickup Back](https://veradial.com/blog/why-people-stopped-answering)
+- [The Real Cost of a Missed Call for a Small Business](https://veradial.com/blog/real-cost-of-a-missed-call)
+- [A Case for Boring Automation](https://veradial.com/blog/a-case-for-boring-automation)
+- [Notes From Building a Calling Product Solo](https://veradial.com/blog/building-a-calling-product-solo)
+- [What "Verified Business Calling" Actually Means — and Why We Bet the Company on It](https://veradial.com/blog/what-verified-business-calling-means)
+- [What We'll Never Build Into VeraDial](https://veradial.com/blog/what-we-wont-build)
+- [Why We Built an AI That Introduces Itself as an AI](https://veradial.com/blog/why-our-ai-introduces-itself-as-an-ai)
+- [The First Calls to Hand to an AI (and the Ones to Keep)](https://veradial.com/blog/first-calls-to-hand-to-an-ai)
+
+### Comparisons
+
+- [All comparisons](https://veradial.com/compare)
+- [VeraDial vs Google Voice](https://veradial.com/compare/google-voice)
+- [VeraDial vs TextNow](https://veradial.com/compare/textnow)
+- [VeraDial vs Sideline](https://veradial.com/compare/sideline)
+- [VeraDial vs Burner](https://veradial.com/compare/burner)
+- [VeraDial vs Hushed](https://veradial.com/compare/hushed)
+- [VeraDial vs SpoofCard](https://veradial.com/compare/spoofcard)
+- [VeraDial vs OpenPhone](https://veradial.com/compare/openphone)
+- [VeraDial vs Grasshopper](https://veradial.com/compare/grasshopper)
+- [VeraDial vs Dialpad](https://veradial.com/compare/dialpad)
+- [VeraDial vs RingCentral](https://veradial.com/compare/ringcentral)
+- [VeraDial vs Ooma](https://veradial.com/compare/ooma)
+- [VeraDial vs Vonage](https://veradial.com/compare/vonage)
+- [VeraDial vs Line2](https://veradial.com/compare/line2)
+- [VeraDial vs iPlum](https://veradial.com/compare/iplum)
+- [VeraDial vs Rosie](https://veradial.com/compare/rosie)
+- [VeraDial vs Goodcall](https://veradial.com/compare/goodcall)
+- [VeraDial vs Smith.ai](https://veradial.com/compare/smith-ai)
+- [VeraDial vs WithAllo](https://veradial.com/compare/withallo)
+- [VeraDial vs Reception.ai](https://veradial.com/compare/reception-ai)
+- [VeraDial vs AskBenny](https://veradial.com/compare/askbenny)
+- [VeraDial vs Dialbox](https://veradial.com/compare/dialbox)
+- [VeraDial vs SkipCalls](https://veradial.com/compare/skipcalls)
+- [VeraDial vs Beside](https://veradial.com/compare/beside)
+
+### Alternatives
+
+- [All alternatives](https://veradial.com/alternatives)
+- [Google Voice Alternatives](https://veradial.com/alternatives/google-voice)
+- [OpenPhone Alternatives](https://veradial.com/alternatives/openphone)
+- [Grasshopper Alternatives](https://veradial.com/alternatives/grasshopper)
+- [Dialpad Alternatives](https://veradial.com/alternatives/dialpad)
+- [RingCentral Alternatives](https://veradial.com/alternatives/ringcentral)
+- [Vonage Alternatives](https://veradial.com/alternatives/vonage)
+- [Line2 Alternatives](https://veradial.com/alternatives/line2)
+- [iPlum Alternatives](https://veradial.com/alternatives/iplum)
+- [TextNow Alternatives](https://veradial.com/alternatives/textnow)
+- [Sideline Alternatives](https://veradial.com/alternatives/sideline)
+- [Burner Alternatives](https://veradial.com/alternatives/burner)
+- [Hushed Alternatives](https://veradial.com/alternatives/hushed)
+- [SpoofCard Alternatives](https://veradial.com/alternatives/spoofcard)
+- [Smith.ai Alternatives](https://veradial.com/alternatives/smith-ai)
+- [Goodcall Alternatives](https://veradial.com/alternatives/goodcall)
+- [Dialzara Alternatives](https://veradial.com/alternatives/dialzara)
+- [Ruby Alternatives](https://veradial.com/alternatives/ruby)
+- [My AI Front Desk Alternatives](https://veradial.com/alternatives/my-ai-front-desk)
+- [Rosie Alternatives](https://veradial.com/alternatives/rosie)
+- [Reception.ai Alternatives](https://veradial.com/alternatives/reception-ai)
+- [WithAllo Alternatives](https://veradial.com/alternatives/withallo)
+- [AskBenny Alternatives](https://veradial.com/alternatives/askbenny)
+- [Dialbox Alternatives](https://veradial.com/alternatives/dialbox)
+- [SkipCalls Alternatives](https://veradial.com/alternatives/skipcalls)
+
+### Use Cases
+
+- [All use cases](https://veradial.com/use-cases)
+- [For Realtors](https://veradial.com/use-cases/realtors)
+- [For Freelancers](https://veradial.com/use-cases/freelancers)
+- [For Sales Teams](https://veradial.com/use-cases/sales)
+- [For Property Managers](https://veradial.com/use-cases/property-managers)
+- [For Recruiters](https://veradial.com/use-cases/recruiters)
+- [For Landscaping & Lawn Care](https://veradial.com/use-cases/landscaping)
+- [For Financial Advisers](https://veradial.com/use-cases/financial-advisors)
+- [For Insurance Agents & Agencies](https://veradial.com/use-cases/insurance-agents)
+- [For Electricians & Electrical Contractors](https://veradial.com/use-cases/electricians)
+- [For Plumbing Answering Service](https://veradial.com/use-cases/plumbers)
+- [For Contractors & Home Services](https://veradial.com/use-cases/contractors)
+- [For HVAC Answering Service](https://veradial.com/use-cases/hvac)
+- [For Roofing Contractors](https://veradial.com/use-cases/roofers)
+- [For Cleaning Services & Janitorial](https://veradial.com/use-cases/cleaning-services)
+- [For Auto Repair Shops & Mechanics](https://veradial.com/use-cases/auto-repair)
+- [For Dental Office Administration](https://veradial.com/use-cases/dentists)
+- [For Business Owners Who Travel](https://veradial.com/use-cases/travel)
+
+### Glossary
+
+- [All glossary entries](https://veradial.com/glossary)
+- [AI receptionist](https://veradial.com/glossary/ai-receptionist)
+- [Virtual receptionist](https://veradial.com/glossary/virtual-receptionist)
+- [Answering service](https://veradial.com/glossary/answering-service)
+- [Auto attendant](https://veradial.com/glossary/auto-attendant)
+- [Missed call rate](https://veradial.com/glossary/missed-call-rate)
+- [Robocall](https://veradial.com/glossary/robocall)
+- [TCPA](https://veradial.com/glossary/tcpa)
+- [TRACED Act](https://veradial.com/glossary/traced-act)
+- [IVR](https://veradial.com/glossary/ivr)
+- [Toll-free number](https://veradial.com/glossary/toll-free-number)
+- [Vanity number](https://veradial.com/glossary/vanity-number)
+- [Number porting](https://veradial.com/glossary/number-porting)
+
+### Phone Numbers
+
+- [Browse numbers](https://veradial.com/numbers)
+- [212 (New York, NY)](https://veradial.com/numbers/212)
+- [310 (Los Angeles, CA)](https://veradial.com/numbers/310)
+- [415 (San Francisco, CA)](https://veradial.com/numbers/415)
+- [305 (Miami, FL)](https://veradial.com/numbers/305)
+- [312 (Chicago, IL)](https://veradial.com/numbers/312)
+- [512 (Austin, TX)](https://veradial.com/numbers/512)
+- [206 (Seattle, WA)](https://veradial.com/numbers/206)
+- [416 (Toronto, ON)](https://veradial.com/numbers/416)
+- [604 (Vancouver, BC)](https://veradial.com/numbers/604)
+- [702 (Las Vegas, NV)](https://veradial.com/numbers/702)
+- [202 (Washington, DC)](https://veradial.com/numbers/202)
+- [404 (Atlanta, GA)](https://veradial.com/numbers/404)
+- [617 (Boston, MA)](https://veradial.com/numbers/617)
+- [303 (Denver, CO)](https://veradial.com/numbers/303)
+- [214 (Dallas, TX)](https://veradial.com/numbers/214)
+- [602 (Phoenix, AZ)](https://veradial.com/numbers/602)
+- [713 (Houston, TX)](https://veradial.com/numbers/713)
+- [215 (Philadelphia, PA)](https://veradial.com/numbers/215)
+- [619 (San Diego, CA)](https://veradial.com/numbers/619)
+- [858 (San Diego, CA)](https://veradial.com/numbers/858)
+- [360 (Western Washington, WA)](https://veradial.com/numbers/360)
+- [470 (Atlanta, GA)](https://veradial.com/numbers/470)
+- [508 (Southeastern Massachusetts, MA)](https://veradial.com/numbers/508)
+- [541 (Oregon, OR)](https://veradial.com/numbers/541)
+- [872 (Chicago, IL)](https://veradial.com/numbers/872)
+- [218 (Northern Minnesota, MN)](https://veradial.com/numbers/218)
+- [386 (Northern Florida, FL)](https://veradial.com/numbers/386)
+- [586 (Macomb County, MI)](https://veradial.com/numbers/586)
+- [219 (Northwestern Indiana, IN)](https://veradial.com/numbers/219)
+- [765 (Central Indiana, IN)](https://veradial.com/numbers/765)
+- [442 (California, CA)](https://veradial.com/numbers/442)
+- [425 (Seattle Eastside, WA)](https://veradial.com/numbers/425)
+- [253 (Tacoma, WA)](https://veradial.com/numbers/253)
+- [260 (Northeastern Indiana, IN)](https://veradial.com/numbers/260)
+- [402 (Eastern Nebraska, NE)](https://veradial.com/numbers/402)
+- [458 (Oregon, OR)](https://veradial.com/numbers/458)
+- [773 (Chicago, IL)](https://veradial.com/numbers/773)
+- [513 (Cincinnati, OH)](https://veradial.com/numbers/513)
+- [564 (Western Washington, WA)](https://veradial.com/numbers/564)
+- [606 (Eastern Kentucky, KY)](https://veradial.com/numbers/606)
+
+## After-hours and voicemail resources
+- [After-hours answering service](https://veradial.com/after-hours-answering-service): Coverage, setup, limits and owner follow-up.
+- [Business voicemail greeting generator](https://veradial.com/tools/business-voicemail-greeting-generator): Free customizable scripts for business voicemail.
+
+### Demo Video
+
+- [Explainer (60 seconds, YouTube)](https://www.youtube.com/watch?v=TrPEY_5jwso): VeraDial places a business call, the AI handles the conversation, and a transcript is returned to the operator.
+
+### Official References Cited by Guides
+
+- [FCC call authentication](https://www.fcc.gov/call-authentication)
+- [FCC TRACED Act implementation](https://www.fcc.gov/TRACEDAct)
+- [CRTC caller ID spoofing and STIR/SHAKEN](https://crtc.gc.ca/eng/phone/telemarketing/identit.htm)
+- [Twilio STIR/SHAKEN trust authentication](https://www.twilio.com/en-us/trust/shaken-stir)
+
+### Account & Legal
+
+- [Privacy Policy](https://veradial.com/privacy)
+- [Terms of Service](https://veradial.com/terms)
+- [PIPEDA Commitments](https://veradial.com/pipeda): how VeraDial handles Canadian privacy law — consent, access, deletion, and where data is hosted
+- [Delete Account](https://veradial.com/delete-account)
+
+### Contact
+
+- [Email support@veradial.com](mailto:support@veradial.com)

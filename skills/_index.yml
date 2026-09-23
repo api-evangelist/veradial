@@ -1,0 +1,14 @@
+generated: '2026-09-23'
+method: searched
+source: https://github.com/VeraDial/veradial-agent-skill (provider-published skill saved verbatim) + one skill generated from the docs-generated contract
+skills:
+- file: veradial-receptionist.md
+  name: veradial-receptionist
+  provenance: provider-published (verbatim from github.com/VeraDial/veradial-agent-skill, MIT)
+  api: VeraDial MCP Server (https://api.veradial.com/mcp)
+  tools: [list_calls, get_call, list_bot_calls, get_bot_call, list_voicemails, list_sms_conversations, get_sms_conversation, list_contacts, get_contact, list_numbers, get_receptionist, get_subscription, get_usage]
+- file: veradial-subscribe-to-receptionist-events.md
+  name: veradial-subscribe-to-receptionist-events
+  provenance: generated
+  api: openapi/_ae-authored/veradial-openapi-generated.yml
+  operations: [get_me, get_lines, get_samples, post_hooks, delete_hooks_id]

@@ -1,0 +1,14 @@
+generated: '2026-09-23'
+method: searched
+source:
+- https://veradial.com/help/zapier-integration-api
+- https://veradial.com/updates
+versioning:
+  scheme: URL path version (/api/v1/integrations/zapier) plus a versioned event envelope
+  evidence: 'Every hook delivery is one JSON object with id, type, version ... type is receptionist.event.recorded and version is 1.'
+  docs: https://veradial.com/help/zapier-integration-api
+deprecation: null
+deprecation_note: No deprecation or sunset policy is published.
+sla: null
+status_page: null
+status_page_note: No public status page found (veradial.com/status 404; status.veradial.com does not resolve, probed 2026-09-23).

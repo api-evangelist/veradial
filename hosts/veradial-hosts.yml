@@ -1,0 +1,153 @@
+generated: '2026-09-23'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 12
+  own: 3
+  other_domain: 5
+  platform: 4
+  roles:
+  - api
+  - identity
+  - other
+  - source
+  - website
+hosts:
+- host: api.veradial.com
+  found_by:
+  - apis[]
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves:
+  - api
+  platform: rrmjstsbidgkqibvzvzo.supabase.co
+  registrable_domain: veradial.com
+  role: api
+  relation: own
+- host: api.zapier.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: zapier.com
+  role: api
+  relation: other-domain
+- host: app.veradial.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - SignUp
+  - Login
+  serves: []
+  registrable_domain: veradial.com
+  role: identity
+  relation: own
+- host: crtc.gc.ca
+  found_by:
+  - docs-index
+  types: []
+  serves:
+  - docs
+  registrable_domain: gc.ca
+  role: other
+  relation: other-domain
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: veradial.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Website
+  - Documentation
+  - DeveloperPortal
+  - APIReference
+  - GettingStarted
+  - Support
+  - Blog
+  - ChangeLog
+  - Pricing
+  - TermsOfService
+  - PrivacyPolicy
+  serves:
+  - docs
+  - hosting
+  vendor: vercel
+  registrable_domain: veradial.com
+  role: website
+  relation: own
+- host: www.fcc.gov
+  found_by:
+  - docs-index
+  types: []
+  serves:
+  - docs
+  registrable_domain: fcc.gov
+  role: other
+  relation: other-domain
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: www.twilio.com
+  found_by:
+  - docs-index
+  types: []
+  serves:
+  - docs
+  registrable_domain: twilio.com
+  role: other
+  relation: other-domain
+- host: www.youtube.com
+  found_by:
+  - docs-index
+  types: []
+  serves:
+  - docs
+  registrable_domain: youtube.com
+  role: other
+  relation: platform
+- host: x.com
+  found_by:
+  - pointer
+  types:
+  - X
+  serves: []
+  registrable_domain: x.com
+  role: other
+  relation: platform
+- host: zapier.com
+  found_by:
+  - probed
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: zapier.com
+  role: other
+  relation: other-domain

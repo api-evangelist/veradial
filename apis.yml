@@ -1,0 +1,173 @@
+name: VeraDial
+aid: veradial
+description: VeraDial is an AI receptionist and business phone app for small businesses in the United States and
+  Canada, built by Graham Thomson in Toronto. It gives a business a dedicated US or Canadian number with Vera, an
+  AI receptionist that answers calls and texts 24/7, screens callers, takes messages, books appointments and places
+  outbound AI calls. Developers and agents reach an account three ways - a read-only remote MCP server at api.veradial.com/mcp
+  secured with OAuth 2.1, a Zapier REST Hooks integration API authenticated with vdk_ API keys, and signed HMAC
+  event webhooks for Make, n8n or your own service.
+url: https://raw.githubusercontent.com/api-evangelist/veradial/refs/heads/main/apis.yml
+image: https://veradial.com/opengraph-image
+x-type: company
+x-source: apis-io-submission
+x-submitted-by: listings@veradial.com, apis.io/add 2026-09-22
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-09-23 (local-v5; was apis.io/add submission worked by the support sweep 2026-09-23;
+  host probed healthy (root 200, invented path 404, llms.txt 200))
+specificationVersion: '0.23'
+created: '2026-09-23'
+modified: '2026-09-23'
+tags:
+- AI Receptionist
+- Business Phone
+- Telephony
+- Voice AI
+- SMS
+- Webhooks
+- MCP
+- Small Business
+common:
+- type: RateLimits
+  url: rate-limits/veradial-rate-limits.yml
+- type: Plans
+  url: plans/veradial-plans-pricing.yml
+- type: Spectral
+  url: rules/veradial-rules.yml
+- type: JSONLD
+  url: json-ld/veradial-context.jsonld
+- type: Vocabulary
+  url: vocabulary/veradial-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Webhooks
+  url: asyncapi/veradial-webhooks.yml
+- type: DataModel
+  url: data-model/veradial-data-model.yml
+- type: ChangeLog
+  url: changelog/veradial-changelog.yml
+- type: Idempotency
+  url: conventions/veradial-conventions.yml
+- type: Conventions
+  url: conventions/veradial-conventions.yml
+- type: Authentication
+  url: authentication/veradial-authentication.yml
+- type: OAuthScopes
+  url: scopes/veradial-scopes.yml
+- type: Lifecycle
+  url: lifecycle/veradial-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/veradial-error-codes.yml
+- type: Conformance
+  url: conformance/veradial-conformance.yml
+- type: Overlay
+  url: overlays/veradial-zapier-integration-api-overlay.yaml
+- type: LLMsTxt
+  url: llms/veradial-llms.txt
+- type: ToolCrosswalk
+  url: mcp/veradial-tool-crosswalk.yml
+- type: MCPServer
+  url: mcp/veradial-mcp.yml
+- type: WellKnown
+  url: well-known/veradial-well-known.yml
+- type: Hosts
+  url: hosts/veradial-hosts.yml
+- type: Vendors
+  url: vendors/veradial-vendors.yml
+- type: DomainSecurity
+  url: security/veradial-domain-security.yml
+- type: Website
+  url: https://veradial.com/
+- type: Documentation
+  url: https://veradial.com/help
+- type: DeveloperPortal
+  url: https://veradial.com/for-agents
+- type: APIReference
+  url: https://veradial.com/help/zapier-integration-api
+- type: GettingStarted
+  url: https://veradial.com/help/setup-veradial-first-screened-call
+- type: Support
+  url: https://veradial.com/faq
+- type: Blog
+  url: https://veradial.com/blog
+- type: ChangeLog
+  url: https://veradial.com/updates
+- type: Pricing
+  url: https://veradial.com/pricing
+- type: SignUp
+  url: https://app.veradial.com/signup
+- type: Login
+  url: https://app.veradial.com/
+- type: TermsOfService
+  url: https://veradial.com/terms
+- type: PrivacyPolicy
+  url: https://veradial.com/privacy
+- type: GitHubOrganization
+  url: https://github.com/VeraDial
+- type: X
+  url: https://x.com/VeraDialApp
+- type: LinkedIn
+  url: https://www.linkedin.com/company/112327687/
+maintainers:
+- FN: VeraDial
+  email: support@veradial.com
+  url: https://veradial.com/
+apis:
+- name: VeraDial MCP Server
+  aid: veradial:mcp
+  description: Remote, read-only Model Context Protocol server (Streamable HTTP) that lets a customer's own AI assistant
+    - Claude, ChatGPT, Codex or any MCP client - read that customer's VeraDial account - calls with AI screening
+    summaries, call and voicemail transcripts, SMS threads, contacts, phone lines, receptionist configuration, plan
+    status and remaining minutes. OAuth 2.1 with the customer's VeraDial login; no API keys.
+  humanURL: https://veradial.com/for-agents
+  baseURL: https://api.veradial.com/mcp
+  tags:
+  - MCP
+  - AI Agents
+  - OAuth
+  - Read Only
+  properties:
+  - type: Documentation
+    url: https://veradial.com/help/connect-ai-assistant
+  - type: GettingStarted
+    url: https://veradial.com/help/connect-ai-assistant
+- name: VeraDial Zapier Integration API
+  aid: veradial:zapier-integration-api
+  description: REST Hooks integration API used by VeraDial's native Zapier app and documented for direct callers
+    - test a vdk_ API key, list selectable phone lines, fetch event samples, and subscribe or unsubscribe REST Hooks
+    for call.screened, voicemail.received, sms.reply_sent and appointment.booked events, plus session-token API-key
+    management routes. OpenAPI contract generated from the documentation by API Evangelist (2026-09-23); not the
+    provider's own document.
+  humanURL: https://veradial.com/help/zapier-integration-api
+  baseURL: https://api.veradial.com/api/v1/integrations/zapier
+  tags:
+  - REST Hooks
+  - Zapier
+  - Webhooks
+  - Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/_ae-authored/veradial-openapi-generated.yml
+    x-provenance: generated
+  - type: APIReference
+    url: https://veradial.com/help/zapier-integration-api
+  - type: Documentation
+    url: https://veradial.com/help/connect-zapier
+  - type: Webhooks
+    url: https://veradial.com/help/webhooks-make-n8n
+  - type: JSONSchema
+    url: json-schema/veradial-post-hooks-request-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-samples-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-lines-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-post-keys-request-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-post-keys-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-keys-response-schema.json
+x-enrichment:
+  date: '2026-09-23'
+  status: enriched
+  artifacts_added: 36
+  pass: local-v5

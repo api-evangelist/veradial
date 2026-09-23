@@ -1,0 +1,50 @@
+generated: '2026-09-23'
+method: searched
+source: https://veradial.com/privacy
+probed:
+- {url: https://veradial.com/privacy, status: 200}
+- {url: https://veradial.com/delete-account, status: 200}
+- {url: https://veradial.com/pipeda, status: 200}
+- {url: https://veradial.com/accessibility, status: 404}
+- {url: https://veradial.com/accessibility/vpat, status: 404}
+- {url: https://veradial.com/legal/subprocessors, status: 404}
+- {url: https://veradial.com/legal/dpa, status: 404}
+- {url: https://veradial.com/privacy/requests, status: 404}
+- {url: https://veradial.com/transparency, status: 404}
+- {url: https://veradial.com/security/sbom, status: 404}
+- {url: https://veradial.com/docs/data-residency, status: 404}
+- {url: https://veradial.com/ai/transparency, status: 404}
+- {url: https://veradial.com/legal/report-content, status: 404}
+- {url: https://veradial.com/.well-known/security.txt, status: 404}
+signals:
+  global_privacy_control:
+    honored: true
+    url: https://veradial.com/privacy
+    evidence:
+    - source: https://veradial.com/privacy
+      http_status: 200
+      fetched: '2026-09-23'
+      quote: When Global Privacy Control is active on our app website (app.veradial.com), we do not initialize PostHog
+        or send PostHog analytics or session-replay data from that site.
+  data_subject_request:
+    url: https://veradial.com/privacy
+    section: 11. Your Rights
+    channel: support@veradial.com
+    self_service: https://veradial.com/delete-account (in-app Settings -> Delete Account; immediate and irreversible)
+    rights_named: [know, deletion, opt out of sale/sharing (CCPA), access and challenge accuracy (PIPEDA), access, rectify, erase, port (GDPR), Quebec Law 25]
+    evidence:
+    - source: https://veradial.com/privacy
+      http_status: 200
+      fetched: '2026-09-23'
+      quote: To exercise your rights, email support@veradial.com.
+  subprocessors:
+    url: https://veradial.com/privacy
+    section: 3. Third-Party Services
+    named: [Twilio, Supabase, Google Cloud, RevenueCat, Intercom, ElevenLabs, Cartesia, OpenAI, Anthropic, Google Gemini, xAI, LiveKit, Deepgram, Sentry, PostHog, Expo, Vercel, Meta, Firecrawl, Resend, Cloudflare]
+    dated: true
+    dated_note: 'Listed inside the privacy policy, which carries "Last updated: September 11, 2026"; no standalone subprocessor page.'
+    evidence:
+    - source: https://veradial.com/privacy
+      http_status: 200
+      fetched: '2026-09-23'
+      quote: We share data with the following third-party services as necessary to provide VeraDial's features.

@@ -1,0 +1,58 @@
+name: VeraDial Plans
+generated: '2026-09-23'
+method: searched
+source: https://veradial.com/pricing.md
+human_source: https://veradial.com/pricing
+audience: business-product
+pricing_basis: tiered-subscription
+published: true
+currency: USD
+delivery:
+  delivery: managed
+plan_count: 4
+note: 'Machine-readable pricing published by VeraDial (Last updated: 2026-09-21). No free tier; 7-day free trial
+  on Vera Lite and Plus. The MCP connector is included "at no extra charge"; the Zapier/webhook integrations
+  require Vera Plus. No separate developer/API pricing exists.'
+plans:
+- name: Vera Lite
+  price: 14.99
+  price_text: $14.99/mo
+  annual_price_text: $149.99/yr
+  billing_period: month
+  features:
+  - Dedicated US or Canadian business number (local or toll-free)
+  - AI SMS assistant answers inbound texts (photos included)
+  - Voicemail transcription, call recording, call forwarding, business SMS
+  - Read-only account access from ChatGPT, Claude, and other MCP-compatible assistants
+  limits:
+  - 50 AI-receptionist minutes and 150 calling minutes each month, shared across the account
+  - 1 line included; no additional lines on Lite
+- name: Vera Plus
+  price: 29.99
+  price_text: $29.99/mo
+  annual_price_text: $299.99/yr
+  billing_period: month
+  features:
+  - Outbound AI calling — set a goal, the AI places the call and returns a transcript (100 minutes/month included)
+  - Live call translation across 13 languages (20 minutes/month included)
+  - Signed event webhooks for Zapier, Make, n8n, and your own tools
+  limits:
+  - unlimited AI-receptionist answering under fair use and 300 calling minutes each month, shared across the account
+  - 1 line included; add a second for $9.99/month
+- name: Vera Business
+  price: 59.99
+  price_text: $59.99/mo
+  annual_price_text: $599.99/yr
+  billing_period: month
+  features:
+  - 3 business lines included under one account
+  - AI call and text receptionist on every line
+  - Priority support
+  limits:
+  - unlimited AI-receptionist answering under fair use, 900 calling minutes, 300 AI-calling minutes, and 60 live-translation minutes each month, shared across the account
+- name: Custom
+  price: Quote only
+  price_text: Quote only
+  features:
+  - More than 5 lines or a rollout needing written integration, volume, and support terms
+  limits: []

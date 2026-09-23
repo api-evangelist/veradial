@@ -1,0 +1,39 @@
+generated: '2026-09-23'
+method: searched
+source:
+- https://veradial.com/help/webhooks-make-n8n
+- https://veradial.com/help/zapier-integration-api
+api: VeraDial Zapier Integration API
+summary: VeraDial emits receptionist events through two delivery contracts - REST Hooks subscribed by the native
+  Zapier app (POST /hooks), and custom signed HTTPS webhooks configured in the dashboard for Make, n8n or your own
+  service (Vera Plus).
+delivery:
+  transport: https-post
+  content_type: application/json
+  semantics: at-least-once
+  dedup_field: id
+  signature:
+    algorithm: HMAC-SHA256
+    header: X-VeraDial-Signature
+    format: t=<unix-seconds>,v1=<hex digest> over "<timestamp>.<raw request body>"
+    secret_prefix: whsec_
+    applies_to: custom webhooks only; Zapier REST Hook deliveries are not HMAC-signed
+  retries: Custom webhooks retry failures with backoff and stop after six total attempts; an endpoint is automatically
+    paused after fifteen consecutive failed deliveries.
+  gone: A 410 Gone from a Zapier target deactivates the subscription without retry.
+  envelope_fields: [id, type, version, kind, source, occurredAt, account, line, data]
+  envelope_type: receptionist.event.recorded
+  envelope_version: 1
+events:
+- name: call.screened
+  description: Vera screened a call.
+  data: [callId, caller, reason, organization, callbackNumber, urgency, requestedAction, summary]
+- name: voicemail.received
+  description: A voicemail was received.
+  data: [voicemailId, callId, caller, durationSeconds, transcriptionStatus]
+- name: sms.reply_sent
+  description: Vera sent an AI text reply.
+  data: [draftId, conversationKey, customer, mode, body]
+- name: appointment.booked
+  description: An appointment was booked/confirmed.
+  data: [appointmentBookingId, callId, caller, callbackNumber, reason, startAt, endAt]

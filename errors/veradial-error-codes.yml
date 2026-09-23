@@ -1,0 +1,43 @@
+generated: '2026-09-23'
+method: searched
+source: https://veradial.com/help/zapier-integration-api
+format: json
+envelope:
+  observed: '{"error":"Missing or invalid Authorization header"} (GET /me without a key, 401, probed 2026-09-23)'
+  unknown_route: '{"message":"Route GET:/x not found","error":"Not Found","statusCode":404} (probed 2026-09-23)'
+problems:
+- status: 401
+  title: Unauthorized
+  type: null
+  description: Missing, invalid or revoked vdk_ API key. A revoked key returns 401 and deactivates its REST Hook subscriptions.
+  remediation: Generate a new key at https://app.veradial.com/dashboard/integrations.
+- status: 403
+  title: INTEGRATIONS_NOT_ENTITLED
+  type: INTEGRATIONS_NOT_ENTITLED
+  description: The account is not entitled to integrations (VeraDial Plus is required to create a key and subscribe a Zap).
+  remediation: Upgrade to Vera Plus.
+- status: 409
+  title: API_KEY_LIMIT_REACHED
+  type: API_KEY_LIMIT_REACHED
+  description: Key creation refused; a user may have up to five active keys.
+  remediation: Revoke an unused key with DELETE /keys/:id.
+- status: 404
+  title: LINE_NOT_FOUND
+  type: LINE_NOT_FOUND
+  description: The lineId on POST /hooks is not an owned VeraDial line.
+  remediation: Use an id from GET /lines, or null for All lines.
+- status: 409
+  title: ZAPIER_SUBSCRIPTION_LIMIT_REACHED
+  type: ZAPIER_SUBSCRIPTION_LIMIT_REACHED
+  description: A VeraDial account may have up to 25 active Zapier hook subscriptions.
+  remediation: Unsubscribe unused hooks with DELETE /hooks/:id.
+- status: 400
+  title: Unsafe target URL
+  type: null
+  description: Subscription URLs must be public HTTPS endpoints and pass VeraDial's server-side request-forgery checks.
+  remediation: Use a final, publicly reachable HTTPS URL.
+- status: 410
+  title: Gone (returned BY the receiver)
+  type: null
+  description: A 410 Gone from the Zap target means the Zap no longer accepts the hook; VeraDial deactivates the subscription and does not retry.
+  remediation: Resubscribe with POST /hooks.

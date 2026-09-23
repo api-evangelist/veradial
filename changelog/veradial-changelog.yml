@@ -1,0 +1,19 @@
+generated: '2026-09-23'
+method: searched
+source: https://veradial.com/updates
+url: https://veradial.com/updates
+scheme: weekly dated product notes (mobile app semver in notes)
+current_version: 1.2.3
+note: Product-level release notes across the web app, iPhone and Android; no API-specific changelog is published.
+entries:
+- {version: null, date: '2026-09-20', breaking: false, highlights: [Share the business phone with your team]}
+- {version: 1.2.3, date: '2026-08-31', breaking: false, highlights: ['A clearer workday, wherever you use VeraDial', Start and schedule AI calls from the browser, 'Annual billing, if you prefer it']}
+- {version: 1.2.2, date: '2026-08-24', breaking: false, highlights: ['Help where you are, and Vera on your website']}
+- {version: null, date: '2026-08-17', breaking: false, highlights: ['Safer signup, and upgrades you can do yourself']}
+- {version: null, date: '2026-08-10', breaking: false, highlights: [Talk instead of typing]}
+- {version: null, date: '2026-08-03', breaking: false, highlights: [The Vera tab, redesigned]}
+- {version: null, date: '2026-07-20', breaking: false, highlights: ['Faster setup, and plans you control']}
+- {version: null, date: '2026-07-13', breaking: false, highlights: ['See where calls come from, and what Vera got done']}
+- {version: null, date: '2026-06-22', breaking: false, highlights: ['Per-line answering, spam filters, and call tracking']}
+- {version: null, date: '2026-05-11', breaking: false, highlights: [Polish on the essentials]}
+- {version: null, date: '2026-04-27', breaking: false, highlights: [VeraDial is live]}

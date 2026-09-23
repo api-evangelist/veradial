@@ -1,0 +1,63 @@
+generated: '2026-09-23'
+method: searched
+source:
+- https://veradial.com/for-agents
+- https://veradial.com/help/connect-ai-assistant
+- https://github.com/VeraDial/veradial-agent-skill/blob/main/skills/veradial-receptionist/SKILL.md
+- https://api.veradial.com/.well-known/oauth-protected-resource
+status: live
+server:
+  name: VeraDial MCP Server
+  url: https://api.veradial.com/mcp
+  transport: streamable-http
+  docs: https://veradial.com/help/connect-ai-assistant
+  overview: https://veradial.com/for-agents
+  openai_plugin: https://chatgpt.com/plugins/plugin_asdk_app_6a61c3dd9f2081918c672e813fb7345e
+  read_only: true
+auth:
+  type: oauth2
+  version: OAuth 2.1
+  protected_resource_metadata: https://api.veradial.com/.well-known/oauth-protected-resource
+  authorization_server: https://rrmjstsbidgkqibvzvzo.supabase.co/auth/v1
+  scopes_supported: [openid, email, profile]
+  note: 'Probed 2026-09-23: POST https://api.veradial.com/mcp (initialize) -> 401 with WWW-Authenticate: Bearer
+    resource_metadata="https://api.veradial.com/.well-known/oauth-protected-resource", error="invalid_token".
+    Developer MCP clients (Claude Code, Codex CLI, Cursor) start in a pending state after consent until VeraDial
+    approves the client registration (support@veradial.com).'
+deployment:
+  mode: remote
+  endpoint: https://api.veradial.com/mcp
+  install: null
+  package: null
+  auth: oauth
+  verified: probed
+tools_note: The live tools/list is OAuth-gated (401 anonymously). Thirteen read-only tools are named, with their
+  parameters described in prose, in VeraDial's own published agent skill (github.com/VeraDial/veradial-agent-skill);
+  inputSchemas require authenticated introspection.
+tools:
+- name: list_calls
+  description: Recent inbound and outbound calls with AI screening summaries (no transcript). Filters limit (1-50), from/to (ISO date-time), screenedOnly.
+- name: get_call
+  description: One call by call_ id, with transcript when the call was recorded and transcribed (null is normal).
+- name: list_bot_calls
+  description: Outbound AI (Vera) calls - goal, status, outcome.
+- name: get_bot_call
+  description: One outbound AI call by botcall_ id, with transcript and summary.
+- name: list_voicemails
+  description: Voicemails with transcripts inline and read state; ids are vm_.
+- name: list_sms_conversations
+  description: SMS threads on the account's VeraDial numbers.
+- name: get_sms_conversation
+  description: One SMS thread, addressed by the thread's from + to numbers rather than an id.
+- name: list_contacts
+  description: Contacts with Contact Memory AI summaries, suggested call goals and interaction stats.
+- name: get_contact
+  description: One contact by E.164 phone number.
+- name: list_numbers
+  description: The account's phone lines with per-line screening and texting-assistant settings.
+- name: get_receptionist
+  description: Receptionist configuration - business identity and caller context.
+- name: get_subscription
+  description: Plan status.
+- name: get_usage
+  description: Remaining AI-call and translation minutes for the current period.

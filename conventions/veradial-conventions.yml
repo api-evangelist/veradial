@@ -1,0 +1,46 @@
+generated: '2026-09-23'
+method: searched
+source:
+- https://veradial.com/help/zapier-integration-api
+- https://veradial.com/help/webhooks-make-n8n
+- https://veradial.com/for-agents
+- https://github.com/VeraDial/veradial-agent-skill/blob/main/skills/veradial-receptionist/SKILL.md
+authentication: {ref: ../authentication/veradial-authentication.yml, style: 'Authorization: Bearer vdk_... (Zapier API); OAuth 2.1 (MCP)'}
+idempotency:
+  coverage: partial
+  scope: [post_hooks, delete_hooks_id, delete_keys_id]
+  mechanism: natural key - repeating the same user, kind and targetUrl on POST /hooks reactivates the existing subscription and returns the same id; DELETE /hooks/:id and DELETE /keys/:id are idempotent
+  header: null
+  retention: null
+  docs: https://veradial.com/help/zapier-integration-api
+  note: POST /keys is not idempotent (each call creates a key). The MCP server is read-only.
+reversibility:
+  write_surfaces:
+  - operation: post_hooks
+    reversal: delete_hooks_id
+    window: null
+    grade: documented
+    docs: https://veradial.com/help/zapier-integration-api
+  - operation: post_keys
+    reversal: delete_keys_id
+    window: null
+    grade: documented
+    docs: https://veradial.com/help/zapier-integration-api
+  - operation: delete_keys_id
+    reversal: null
+    note: Revocation immediately deactivates every REST Hook subscription created with that key; no restore is documented.
+  mcp: na (read-only - "It cannot place calls, send messages, or change settings.")
+pagination:
+  style: none documented
+  note: GET /samples returns up to three recent events; MCP list_calls accepts limit (1-50) and from/to date filters.
+identifiers: Type-prefixed MCP handles (call_, botcall_, vm_); phone numbers are E.164; line.id is the stable line identifier.
+versioning: {ref: ../lifecycle/veradial-lifecycle.yml}
+error_envelope:
+  ref: ../errors/veradial-error-codes.yml
+  shape: '{"error": "<message>"}; named codes such as INTEGRATIONS_NOT_ENTITLED, API_KEY_LIMIT_REACHED, LINE_NOT_FOUND, ZAPIER_SUBSCRIPTION_LIMIT_REACHED'
+request_tracing: Event envelope id is the stable correlation key for at-least-once deliveries.
+rate_limit_signaling:
+  ref: ../rate-limits/veradial-rate-limits.yml
+  note: Rate limits are stated for the MCP server without numbers or headers.
+webhooks:
+  ref: ../asyncapi/veradial-webhooks.yml

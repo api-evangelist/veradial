@@ -1,0 +1,39 @@
+generated: '2026-09-23'
+method: derived
+source: mcp/veradial-mcp.yml (tool names from VeraDial's published agent skill) x openapi/_ae-authored/veradial-openapi-generated.yml
+  (generated from https://veradial.com/help/zapier-integration-api)
+note: The MCP server and the Zapier Integration API are separate surfaces with separate credentials (OAuth
+  connector tokens vs vdk_ API keys, which "work only with the hooks, lines, samples, and me endpoints"). Only
+  the phone-line listing overlaps. The live MCP schema is gated, so the binding is by name and semantics.
+surfaces:
+  openapi: openapi/_ae-authored/veradial-openapi-generated.yml (generated from docs)
+  mcp: https://api.veradial.com/mcp (OAuth-gated; tools/list returns 401 anonymously)
+  graphql: null
+crosswalk:
+- tool: list_numbers
+  category: lines
+  rest: [get_lines]
+  binding: semantic
+  confidence: medium
+  note: Both list the account's VeraDial lines; GET /lines returns id, phoneNumber, label, isPrimary, status while
+    list_numbers also carries per-line receptionist settings.
+mcp_only:
+- {tool: list_calls, reason: no public REST operation for call history}
+- {tool: get_call, reason: no public REST operation for call detail}
+- {tool: list_bot_calls, reason: no public REST operation for AI calls}
+- {tool: get_bot_call, reason: no public REST operation for AI calls}
+- {tool: list_voicemails, reason: no public REST operation for voicemails}
+- {tool: list_sms_conversations, reason: no public REST operation for SMS}
+- {tool: get_sms_conversation, reason: no public REST operation for SMS}
+- {tool: list_contacts, reason: no public REST operation for contacts}
+- {tool: get_contact, reason: no public REST operation for contacts}
+- {tool: get_receptionist, reason: no public REST operation for receptionist configuration}
+- {tool: get_subscription, reason: no public REST operation for plan status}
+- {tool: get_usage, reason: no public REST operation for usage}
+rest_only: [get_me, get_samples, post_hooks, delete_hooks_id, get_keys, post_keys, delete_keys_id]
+coverage:
+  mcp_tools: 13
+  rest_operations: 8
+  bound: 1
+  mcp_only: 12
+  rest_only: 7

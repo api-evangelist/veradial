@@ -1,0 +1,22 @@
+name: VeraDial Rate Limits
+generated: '2026-09-23'
+method: searched
+source: https://veradial.com/help/zapier-integration-api
+limit_count: 2
+note: No numeric request-rate limit or rate-limit response headers are published. The MCP overview states "rate
+  limits on every call" (https://veradial.com/for-agents) and VeraDial's agent skill says "the server rate-limits
+  per user; on a limit error, back off" without numbers. The two rows below are documented resource quotas on the
+  Zapier Integration API.
+limits:
+- name: Active Zapier hook subscriptions
+  kind: quota
+  max: 25
+  scope: per-account
+  endpoint: post_hooks
+  limit_text: A VeraDial account may have up to 25 active Zapier hook subscriptions.
+- name: Active API keys
+  kind: quota
+  max: 5
+  scope: per-user
+  endpoint: post_keys
+  limit_text: A user may have up to five active keys.

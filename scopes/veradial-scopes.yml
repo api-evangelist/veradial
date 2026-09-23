@@ -1,0 +1,27 @@
+generated: '2026-09-23'
+method: searched
+source: https://api.veradial.com/.well-known/oauth-protected-resource
+docs: https://veradial.com/for-agents
+note: The MCP server advertises only OpenID Connect identity scopes; access is read-only and scoped to the
+  signed-in customer's own account rather than by fine-grained scopes.
+schemes:
+- name: mcpOAuth
+  source: well-known/api-veradial-com-oauth-authorization-server.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://rrmjstsbidgkqibvzvzo.supabase.co/auth/v1/oauth/authorize
+    tokenUrl: https://rrmjstsbidgkqibvzvzo.supabase.co/auth/v1/oauth/token
+    pkce: S256
+scopes:
+- scope: openid
+  description: OpenID Connect sign-in with the customer's VeraDial login.
+  flows: [authorizationCode]
+  sources: [well-known/api-veradial-com-oauth-protected-resource.json]
+- scope: email
+  description: The signed-in customer's email address.
+  flows: [authorizationCode]
+  sources: [well-known/api-veradial-com-oauth-protected-resource.json]
+- scope: profile
+  description: The signed-in customer's basic profile.
+  flows: [authorizationCode]
+  sources: [well-known/api-veradial-com-oauth-protected-resource.json]

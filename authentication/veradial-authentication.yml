@@ -1,0 +1,49 @@
+generated: '2026-09-23'
+method: searched
+source:
+- https://veradial.com/help/zapier-integration-api
+- https://veradial.com/for-agents
+- https://api.veradial.com/.well-known/oauth-protected-resource
+- https://api.veradial.com/.well-known/oauth-authorization-server
+docs: https://veradial.com/help/zapier-integration-api
+summary:
+  types: [http-bearer, oauth2]
+  api_key_in: [header]
+  oauth2_flows: [authorizationCode]
+schemes:
+- name: vdkApiKey
+  type: http
+  scheme: bearer
+  applies_to: VeraDial Zapier Integration API (hooks, lines, samples, me)
+  key_prefix: vdk_
+  description: 'Zapier-facing requests authenticate with Authorization: Bearer vdk_... using an API key generated
+    from the VeraDial Integrations dashboard. The key is a narrow credential: it works only with the hooks, lines,
+    samples, and me endpoints, and its full value is shown once. VeraDial Plus is required to create a key.'
+  management: https://app.veradial.com/dashboard/integrations
+  revocation: A revoked key returns 401 and immediately deactivates every REST Hook subscription created with that key.
+- name: sessionBearer
+  type: http
+  scheme: bearer
+  applies_to: API-key management routes (GET/POST /keys, DELETE /keys/:id)
+  description: Key management uses the customer's normal VeraDial session bearer token, not a vdk_ Zapier API key.
+- name: mcpOAuth
+  type: oauth2
+  applies_to: VeraDial MCP Server (https://api.veradial.com/mcp)
+  description: OAuth 2.1 with the customer's existing VeraDial login; connector tokens are audience-bound to the MCP
+    server and rejected elsewhere. No API keys.
+  flows:
+  - flow: authorizationCode
+    authorization_server: https://rrmjstsbidgkqibvzvzo.supabase.co/auth/v1
+    authorization_endpoint: https://rrmjstsbidgkqibvzvzo.supabase.co/auth/v1/oauth/authorize
+    token_endpoint: https://rrmjstsbidgkqibvzvzo.supabase.co/auth/v1/oauth/token
+    registration_endpoint: https://rrmjstsbidgkqibvzvzo.supabase.co/auth/v1/oauth/clients/register
+    pkce: S256
+    token_endpoint_auth_methods: [none]
+    grant_types: [authorization_code, refresh_token]
+  protected_resource_metadata: https://api.veradial.com/.well-known/oauth-protected-resource
+- name: webhookSignature
+  type: hmac
+  applies_to: Custom signed event webhooks (outbound from VeraDial)
+  description: X-VeraDial-Signature t=<unix-seconds>,v1=<hex digest>, HMAC-SHA256 over "<timestamp>.<raw body>"
+    with the endpoint's whsec_ secret.
+  docs: https://veradial.com/help/webhooks-make-n8n

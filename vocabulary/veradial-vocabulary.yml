@@ -1,0 +1,55 @@
+generated: '2026-09-23'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/_ae-authored/veradial-openapi-generated.yml
+vocabulary:
+  name: VeraDial Domain Vocabulary
+  description: 'Terms declared by VeraDial''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-09-23'
+  terms:
+  - term: PostHooksRequest
+    definition: 'Object declared by the contract with fields: targetUrl, kind, lineId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/veradial-openapi-generated.yml#/components/schemas/PostHooksRequest
+  - term: PostHooksResponse
+    definition: 'Object declared by the contract with fields: id.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/veradial-openapi-generated.yml#/components/schemas/PostHooksResponse
+  - term: DeleteHooksIdResponse
+    definition: 'Object declared by the contract with fields: id.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/veradial-openapi-generated.yml#/components/schemas/DeleteHooksIdResponse
+  - term: GetKeysResponse
+    definition: 'Object declared by the contract with fields: enabled, entitled, keys.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/veradial-openapi-generated.yml#/components/schemas/GetKeysResponse
+  - term: PostKeysRequest
+    definition: 'Object declared by the contract with fields: name.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/veradial-openapi-generated.yml#/components/schemas/PostKeysRequest
+  - term: PostKeysResponse
+    definition: 'Object declared by the contract with fields: apiKey.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/veradial-openapi-generated.yml#/components/schemas/PostKeysResponse
+  - term: GetLinesResponse
+    definition: 'Object declared by the contract with fields: lines.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/veradial-openapi-generated.yml#/components/schemas/GetLinesResponse
+  - term: GetMeResponse
+    definition: 'Object declared by the contract with fields: id, name.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/veradial-openapi-generated.yml#/components/schemas/GetMeResponse
+  - term: GetSamplesResponse
+    definition: 'Object declared by the contract with fields: id, type, version, kind, source, occurredAt, account, line, data.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/veradial-openapi-generated.yml#/components/schemas/GetSamplesResponse

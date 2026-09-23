@@ -1,0 +1,33 @@
+overlay: 1.0.0
+info:
+  title: VeraDial Zapier Integration API - API Evangelist enhancements
+  version: '2026-09-23'
+  x-source: https://veradial.com/help/zapier-integration-api
+  x-method: generated
+extends: ../openapi/_ae-authored/veradial-openapi-generated.yml
+actions:
+- target: $.components.securitySchemes.bearer
+  update:
+    description: 'Authorization: Bearer vdk_... - an API key generated from the VeraDial Integrations dashboard
+      (https://app.veradial.com/dashboard/integrations). The key works only with the hooks, lines, samples and me
+      endpoints; VeraDial Plus is required. The /keys management routes use the customer''s normal VeraDial session
+      bearer token, not a vdk_ key.'
+- target: $.paths['/hooks'].post.responses
+  update:
+    '400': {description: Unsafe target URL (fails server-side request-forgery checks).}
+    '403': {description: INTEGRATIONS_NOT_ENTITLED}
+    '404': {description: LINE_NOT_FOUND}
+    '409': {description: ZAPIER_SUBSCRIPTION_LIMIT_REACHED (25 active Zapier hook subscriptions per account).}
+- target: $.paths['/keys'].post.responses
+  update:
+    '403': {description: INTEGRATIONS_NOT_ENTITLED}
+    '409': {description: API_KEY_LIMIT_REACHED (up to five active keys per user).}
+- target: $.paths['/me'].get.responses
+  update:
+    '401': {description: Missing, invalid or revoked API key. Observed anonymously 2026-09-23 as {"error":"Missing or invalid Authorization header"}.}
+- target: $.paths['/hooks'].post
+  update:
+    x-idempotency: Repeating the same user, kind and targetUrl reactivates the existing subscription and returns the same id.
+- target: $.paths['/hooks/{id}'].delete
+  update:
+    x-idempotency: DELETE /hooks/:id is idempotent.
