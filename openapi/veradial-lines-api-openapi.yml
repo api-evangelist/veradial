@@ -1,0 +1,53 @@
+openapi: 3.2.0
+info:
+  title: VeraDial Lines API
+  version: '2026-09-23'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-09-23: 8 operation(s) read from 1 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; VeraDial has published no machine-readable contract that the pipeline could find. Engine: anthropic.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 8
+    pages-with-code: 0
+    pages-read: 1
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-09-23'
+  x-generator: generate-contract-from-docs.py
+  x-engine: anthropic
+  x-sources:
+  - https://veradial.com/help/zapier-integration-api
+servers:
+- url: https://api.veradial.com/api/v1/integrations/zapier
+security:
+- bearer: []
+tags:
+- name: Lines
+paths:
+  /lines:
+    get:
+      operationId: get_lines
+      tags:
+      - Lines
+      summary: Returns the list of current active or suspended VeraDial-hosted lines for the…
+      x-source: https://veradial.com/help/zapier-integration-api
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLinesResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetLinesResponse:
+      type: object
+      properties:
+        lines:
+          type: array
+          description: Array of line objects containing id, phoneNumber, label, isPrimary, and status
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer

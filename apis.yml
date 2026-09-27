@@ -23,6 +23,15 @@ tags:
 - Telephony
 - Voice AI
 - SMS
+- Webhook
+- MCP
+- Small Business
+tags_raw:
+- AI Receptionist
+- Business Phone
+- Telephony
+- Voice AI
+- SMS
 - Webhooks
 - MCP
 - Small Business
@@ -114,13 +123,20 @@ maintainers:
 apis:
 - name: VeraDial MCP Server
   aid: veradial:mcp
-  description: Remote, read-only Model Context Protocol server (Streamable HTTP) that lets a customer's own AI assistant
-    - Claude, ChatGPT, Codex or any MCP client - read that customer's VeraDial account - calls with AI screening
-    summaries, call and voicemail transcripts, SMS threads, contacts, phone lines, receptionist configuration, plan
-    status and remaining minutes. OAuth 2.1 with the customer's VeraDial login; no API keys.
+  description: >-
+    Remote, read-only Model Context Protocol server (Streamable HTTP) that lets a customer's own AI assistant
+    - Claude, ChatGPT, Codex or any MCP client - read that customer's VeraDial account - calls with AI
+    screening summaries, call and voicemail transcripts, SMS threads, contacts, phone lines, receptionist
+    configuration, plan status and remaining minutes. OAuth 2.1 with the customer's VeraDial login; no
+    API keys.
   humanURL: https://veradial.com/for-agents
   baseURL: https://api.veradial.com/mcp
   tags:
+  - MCP
+  - AI Agents
+  - Authentication
+  - Read Only
+  tags_raw:
   - MCP
   - AI Agents
   - OAuth
@@ -130,24 +146,128 @@ apis:
     url: https://veradial.com/help/connect-ai-assistant
   - type: GettingStarted
     url: https://veradial.com/help/connect-ai-assistant
-- name: VeraDial Zapier Integration API
-  aid: veradial:zapier-integration-api
-  description: REST Hooks integration API used by VeraDial's native Zapier app and documented for direct callers
-    - test a vdk_ API key, list selectable phone lines, fetch event samples, and subscribe or unsubscribe REST Hooks
-    for call.screened, voicemail.received, sms.reply_sent and appointment.booked events, plus session-token API-key
-    management routes. OpenAPI contract generated from the documentation by API Evangelist (2026-09-23); not the
-    provider's own document.
-  humanURL: https://veradial.com/help/zapier-integration-api
-  baseURL: https://api.veradial.com/api/v1/integrations/zapier
+- aid: veradial:veradial-hooks-api
+  name: VeraDial Hooks API
+  description: The Hooks API from VeraDial — 2 operation(s) for hooks.
+  humanURL: https://veradial.com/for-agents
+  baseURL: https://api.veradial.com/mcp
   tags:
-  - REST Hooks
-  - Zapier
-  - Webhooks
-  - Integrations
+  - Hooks
   properties:
   - type: OpenAPI
-    url: openapi/_ae-authored/veradial-openapi-generated.yml
-    x-provenance: generated
+    url: openapi/veradial-hooks-api-openapi.yml
+  - type: APIReference
+    url: https://veradial.com/help/zapier-integration-api
+  - type: Documentation
+    url: https://veradial.com/help/connect-zapier
+  - type: Webhooks
+    url: https://veradial.com/help/webhooks-make-n8n
+  - type: JSONSchema
+    url: json-schema/veradial-post-hooks-request-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-samples-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-lines-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-post-keys-request-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-post-keys-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-keys-response-schema.json
+- aid: veradial:veradial-keys-api
+  name: VeraDial Keys API
+  description: The Keys API from VeraDial — 2 operation(s) for keys.
+  humanURL: https://veradial.com/for-agents
+  baseURL: https://api.veradial.com/mcp
+  tags:
+  - Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/veradial-keys-api-openapi.yml
+  - type: APIReference
+    url: https://veradial.com/help/zapier-integration-api
+  - type: Documentation
+    url: https://veradial.com/help/connect-zapier
+  - type: Webhooks
+    url: https://veradial.com/help/webhooks-make-n8n
+  - type: JSONSchema
+    url: json-schema/veradial-post-hooks-request-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-samples-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-lines-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-post-keys-request-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-post-keys-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-keys-response-schema.json
+- aid: veradial:veradial-lines-api
+  name: VeraDial Lines API
+  description: The Lines API from VeraDial — 1 operation(s) for lines.
+  humanURL: https://veradial.com/for-agents
+  baseURL: https://api.veradial.com/mcp
+  tags:
+  - Lines
+  properties:
+  - type: OpenAPI
+    url: openapi/veradial-lines-api-openapi.yml
+  - type: APIReference
+    url: https://veradial.com/help/zapier-integration-api
+  - type: Documentation
+    url: https://veradial.com/help/connect-zapier
+  - type: Webhooks
+    url: https://veradial.com/help/webhooks-make-n8n
+  - type: JSONSchema
+    url: json-schema/veradial-post-hooks-request-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-samples-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-lines-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-post-keys-request-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-post-keys-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-keys-response-schema.json
+- aid: veradial:veradial-me-api
+  name: VeraDial Me API
+  description: The Me API from VeraDial — 1 operation(s) for me.
+  humanURL: https://veradial.com/for-agents
+  baseURL: https://api.veradial.com/mcp
+  tags:
+  - Me
+  properties:
+  - type: OpenAPI
+    url: openapi/veradial-me-api-openapi.yml
+  - type: APIReference
+    url: https://veradial.com/help/zapier-integration-api
+  - type: Documentation
+    url: https://veradial.com/help/connect-zapier
+  - type: Webhooks
+    url: https://veradial.com/help/webhooks-make-n8n
+  - type: JSONSchema
+    url: json-schema/veradial-post-hooks-request-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-samples-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-lines-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-post-keys-request-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-post-keys-response-schema.json
+  - type: JSONSchema
+    url: json-schema/veradial-get-keys-response-schema.json
+- aid: veradial:veradial-samples-api
+  name: VeraDial Samples API
+  description: The Samples API from VeraDial — 1 operation(s) for samples.
+  humanURL: https://veradial.com/for-agents
+  baseURL: https://api.veradial.com/mcp
+  tags:
+  - Samples
+  properties:
+  - type: OpenAPI
+    url: openapi/veradial-samples-api-openapi.yml
   - type: APIReference
     url: https://veradial.com/help/zapier-integration-api
   - type: Documentation

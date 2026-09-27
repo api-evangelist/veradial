@@ -1,0 +1,22 @@
+{
+  "provider": "veradial",
+  "sources": [
+    "_ae-authored/veradial-openapi-generated.yml"
+  ],
+  "outputs": [
+    "veradial-hooks-api-openapi.yml",
+    "veradial-keys-api-openapi.yml",
+    "veradial-lines-api-openapi.yml",
+    "veradial-me-api-openapi.yml",
+    "veradial-samples-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "veradial-openapi-generated.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: written (+5 apis, 6 total)"
+  ],
+  "skipped": []
+}
