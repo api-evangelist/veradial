@@ -69,6 +69,11 @@ paths:
         kind: documentation
 components:
   schemas:
+    PostHooksResponse:
+      type: object
+      properties:
+        id:
+          type: string
     PostHooksRequest:
       type: object
       properties:
@@ -85,11 +90,6 @@ components:
       - targetUrl
       - kind
     DeleteHooksIdResponse:
-      type: object
-      properties:
-        id:
-          type: string
-    PostHooksResponse:
       type: object
       properties:
         id:

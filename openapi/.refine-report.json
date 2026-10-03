@@ -16,7 +16,13 @@
   "notes": [
     "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "veradial-openapi-generated.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: written (+5 apis, 6 total)"
+    "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "veradial-hooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "veradial-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "veradial-lines-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "veradial-me-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "veradial-samples-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

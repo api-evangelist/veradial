@@ -80,6 +80,12 @@ paths:
         kind: documentation
 components:
   schemas:
+    PostKeysResponse:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: The secret API key value shown only in this response
     GetKeysResponse:
       type: object
       properties:
@@ -89,12 +95,6 @@ components:
           type: boolean
         keys:
           type: array
-    PostKeysResponse:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: The secret API key value shown only in this response
     PostKeysRequest:
       type: object
       properties:
