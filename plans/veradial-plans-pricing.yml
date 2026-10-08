@@ -56,3 +56,35 @@ plans:
   features:
   - More than 5 lines or a rollout needing written integration, volume, and support terms
   limits: []
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  - subscription
+  units: []
+  plans:
+  - name: Vera Lite
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Vera Plus
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Vera Business
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Custom
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
