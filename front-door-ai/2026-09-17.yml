@@ -1,0 +1,29 @@
+# Front Door AI Index — veradial — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: veradial
+  lexicon_version: '1.0'
+  probed_at: '2026-09-25'
+  host: veradial.com
+  final_host: veradial.com
+  ownership: own
+  owner: veradial
+  shares_host_with: null
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: 18
+  band: 5
+  band_label: prominent
+  host_score: 18
+  density: 10.85
+  words: 1659
+  tiers:
+    agentic: 2
+    core: 16
+    model: 0
+  ambiguous: 0
+  top_terms:
+    AI: 16
+    AI assistant: 2
