@@ -80,12 +80,14 @@ paths:
         kind: documentation
 components:
   schemas:
-    PostKeysResponse:
+    PostKeysRequest:
       type: object
       properties:
-        apiKey:
+        name:
           type: string
-          description: The secret API key value shown only in this response
+          description: The name for the API key, e.g., "Zapier"
+      required:
+      - name
     GetKeysResponse:
       type: object
       properties:
@@ -95,14 +97,12 @@ components:
           type: boolean
         keys:
           type: array
-    PostKeysRequest:
+    PostKeysResponse:
       type: object
       properties:
-        name:
+        apiKey:
           type: string
-          description: The name for the API key, e.g., "Zapier"
-      required:
-      - name
+          description: The secret API key value shown only in this response
   securitySchemes:
     bearer:
       type: http
